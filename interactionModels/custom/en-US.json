@@ -1,0 +1,100 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "kens birthday reminder",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AskBirthdayNameIntent",
+          "slots": [
+            {
+              "name": "birthdayName",
+              "type": "AMAZON.FirstName"
+            }
+          ],
+          "samples": [
+            "store {birthdayName}",
+            "save {birthdayName}",
+            "record {birthdayName}",
+            "note {birthdayName}",
+            "please store {birthdayName}"
+          ]
+        },
+        {
+          "name": "StoreBirthdayIntent",
+          "slots": [
+            {
+              "name": "dayOfBirth",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "monthOfBirth",
+              "type": "AMAZON.Month"
+            }
+          ],
+          "samples": [
+            "the month and day are {monthOfBirth} and {dayOfBirth}",
+            "the day and month are {dayOfBirth} and {monthOfBirth}",
+            "the month is {monthOfBirth} and the day is {dayOfBirth} ",
+            "the day is  {dayOfBirth} and the month is {monthOfBirth}",
+            "{monthOfBirth} the {dayOfBirth}",
+            "{monthOfBirth}  {dayOfBirth}",
+            "{dayOfBirth} {monthOfBirth}",
+            "the {dayOfBirth} of {monthOfBirth}",
+            "{dayOfBirth} of {monthOfBirth}"
+          ]
+        },
+        {
+          "name": "RecallBirthdayIntent",
+          "slots": [
+            {
+              "name": "birthdayName",
+              "type": "AMAZON.FirstName"
+            }
+          ],
+          "samples": [
+            "when is {birthdayName} birthday",
+            "recall {birthdayName} birthdays",
+            "what is {birthdayName} birthdate",
+            "tell me {birthdayName} birthday"
+          ]
+        },
+        {
+          "name": "BirthdaysByMonthIntent",
+          "slots": [
+            {
+              "name": "monthOfBirth",
+              "type": "AMAZON.Month"
+            }
+          ],
+          "samples": [
+            "whose birthdays are in the month of {monthOfBirth}",
+            "whose birthdays are in {monthOfBirth}",
+            "What are the birthdays in {monthOfBirth}"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "8"
+}
