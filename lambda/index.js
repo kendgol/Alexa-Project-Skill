@@ -4,7 +4,7 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require('ask-sdk-core');
-const SKILL_NAME = "kens birthday reminder";
+const SKILL_NAME = "project skill";
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -16,7 +16,7 @@ const LaunchRequestHandler = {
         //Declare session variables
         var sessionAttributes; //Declaring and initializing session attributes
          sessionAttributes = {
-             "birthdayName": '',
+             "projectid": '',
          };
          
          handlerInput.attributesManager.setSessionAttributes(sessionAttributes); //Commit the sessions attributes
@@ -35,17 +35,17 @@ const AskBirthdayNameIntentHandler = {
     },
     handle(handlerInput) {
         
-       var birthdayName = handlerInput.requestEnvelope.request.intent.slots.birthdayName.value;       //read the birthdayName from the slot 
+       var projectid = handlerInput.requestEnvelope.request.intent.slots.projectid.value;       //read the birthdayName from the slot 
         
         var sessionAttributes = handlerInput.attributesManager.getSessionAttributes();  //get the session variables
 
-        sessionAttributes.birthdayName = birthdayName; //update the birthdayName variable  
+        sessionAttributes.projectid = projectid; //update the birthdayName variable  
         
         
         
         
         
-        const speakOutput = "What is the day and month of " + birthdayName + "'s birthday";
+        const speakOutput = "What is the day and month of " + projectid + "'s birthday";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -68,8 +68,8 @@ const StoreBirthdayIntentHandler = {
         var dayOfBirth = handlerInput.requestEnvelope.request.intent.slots.dayOfBirth.value;       	//read the dayOfBirth from the slot
         var monthOfBirth = handlerInput.requestEnvelope.request.intent.slots.monthOfBirth.value;	//read the monthOfBirth from the slot
 
-        var birthdayName = sessionAttributes.birthdayName;  //retrieve the birthdayName session variable.
-        const speakOutput = "Storing " + birthdayName + "'s birthday " + monthOfBirth + " " + dayOfBirth + " to database.";
+        var projectid = sessionAttributes.projectid;  //retrieve the birthdayName session variable.
+        const speakOutput = "Storing " + projectid + "'s birthday " + monthOfBirth + " " + dayOfBirth + " to database.";
                
         
        //dynamodb
@@ -78,9 +78,9 @@ const StoreBirthdayIntentHandler = {
        AWS.config.update({region: 'us-east-1'});
        
        var params = {
-         TableName: '9704c282-efd3-4759-9598-095733d0dc72', //place the correct table name associaded with your alexa hosted skill here as was demonstrated in the video demonstration.
+         TableName: 'a72db5bd-6547-4fe4-be34-dc1ce0bbc7f3', //place the correct table name associaded with your alexa hosted skill here as was demonstrated in the video demonstration.
          Item: {
-             'id' : {S: birthdayName},
+             'id' : {S: projectid},
              'day' : {N: dayOfBirth},
              'month' : {S: monthOfBirth},
          }
